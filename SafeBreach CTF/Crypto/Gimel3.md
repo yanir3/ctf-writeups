@@ -8,6 +8,7 @@ The file is named c2.bmp. Inspecting it with file does not mention it being an a
 After looking at the file with a hex editor. It's pretty clear to see the file magic was modified. The file starts with `@M` instead of `BM`. After changing the first character to `B` you can view the bitmap.
 
 ![The bitmap](https://i.imgur.com/ukk5NUo.png)
+
 The image does not seem interesting. Most steg analysis tools did not find anything interesting. My experience tells that if the data is not easily found in the image using strings/stegdetect, it's usually data in the LSBs.
 
 Hiding data in LSBs of images is pretty straightforward, the "secret" (or in this case, flag) is embedded into the least significant bits in the image. If you rebuild the sequence of those LSBs into bytes again, you can find the secret. Here's my Python script:
