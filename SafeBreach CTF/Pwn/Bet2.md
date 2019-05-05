@@ -13,14 +13,14 @@ After fiddling with it a little bit and entering some builtin functions, it look
 
 So the most natural thing to do here is use `system` to get a shell, right? Well, not so fast:
 
-    >>> system('/bin/sh')
-	name 'system' is not defined
-	>>> eval('system("/bin/sh")')
-	name 'system' is not defined
+    >>> import os; system('/bin/sh')
+	invalid syntax (<string>, line 1)
+	>>> eval('import os; os.system("/bin/sh")')
+	invalid syntax (<string>, line 1)
 	>>> import subprocess
 	invalid syntax (<string>, line 1)
 
-The REPL won't let me use `system`, as it's undefined in the context, and importing modules using the `import` keyword doesn't seem to work at all.
+The REPL won't let me import modules using the `import` keyword at all, and I need a binary execution function to get to a shell.
 Python sandbox escape has been discussed many times before. There is more than one way to import a module, or call builtin functions.
 In this case, what I did was use the `__import__` function to import the `os` module and execute `system`.
 
