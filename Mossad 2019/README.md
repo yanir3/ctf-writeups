@@ -1,0 +1,1 @@
+The write-ups are available in [my blog](https://yanir.dev//The-Mossad-2019-Challenge-Part-1/).
